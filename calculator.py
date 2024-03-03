@@ -1,31 +1,46 @@
 import os
 import art
+
+# Function to perform addition operation
 def add(n1 , n2):
     return n1 + n2
 
+# Function to perform subtraction operation
 def subtraction(n1 , n2):
     return n1 - n2
 
+# Function to perform multiplication operation
 def multiplication(n1, n2):
     return n1 * n2
 
+# Function to perform division operation
 def division(n1, n2):
     return n1 / n2
 
-def reminder(n1, n2):
+# Function to find the remainder after division
+def remainder(n1, n2):
     return n1 % n2
+
+# Function to perform exponentiation operation
 def power(n1, n2):
     return n1 ** n2
 
+# Dictionary containing supported mathematical operations
 operations = {
     "+": add,
     "-": subtraction,
     "*": multiplication,
     "/": division,
-    "%": reminder,
+    "%": remainder,
     "^": power
 }
+
+# Main calculator function
 def math():
+    """
+    A simple calculator function that takes user input for numbers and operations,
+    performs the calculation, and prints the result.
+    """
     print(art.logo)
     num1 = input("First number:\n")
     if num1.isnumeric():
@@ -36,7 +51,7 @@ def math():
         
         while loop == 'y':
             symbol = input("what operation do you want:\n")
-            if symbol == "+" or symbol == "-" or symbol == "*" or symbol == "/" or symbol == "^" or symbol == "%":
+            if symbol in operations:  # Check if the symbol is supported
                 num2 = input("next number:\n")
                 if num2.isnumeric():
                     num2 = float(num2)
@@ -49,18 +64,18 @@ def math():
                         num1 = answer
                     else:
                         os.system('cls')
-                        math()
+                        math()  # Recursive call to restart the calculator
                 else:
                     os.system('cls')
                     print(f"'{num2}' is not a number.")
-                    math()
+                    math()  # Recursive call to restart the calculator
             else:
                 os.system('cls')
-                print(f"This symbol '{symbol}' is not recognized by the calculator,pleas try calculating again.")
-                math()
+                print(f"This symbol '{symbol}' is not recognized by the calculator, please try calculating again.")
+                math()  # Recursive call to restart the calculator
     else:
         os.system('cls')
         print(f"'{num1}' is not a number.")
-        math()
+        math()  # Recursive call to restart the calculator
 
-math()
+math()  # Start the calculator
