@@ -5,7 +5,7 @@ import art
 def add(n1 , n2):
     return n1 + n2
 
-# Function to perform subtraction operation
+# Function to perform a subtraction operation
 def subtraction(n1 , n2):
     return n1 - n2
 
@@ -41,18 +41,23 @@ def math():
     A simple calculator function that takes user input for numbers and operations,
     performs the calculation, and prints the result.
     """
+    
     print(art.logo)
     num1 = input("First number:\n")
+    
     if num1.isnumeric():
         loop = 'y'
         num1 = float(num1)
-        for i in operations:
+        
+        for i in operations:# shows the user all the operations.
                 print(i)
         
         while loop == 'y':
             symbol = input("what operation do you want:\n")
+            
             if symbol in operations:  # Check if the symbol is supported
                 num2 = input("next number:\n")
+                
                 if num2.isnumeric():
                     num2 = float(num2)
                     answer = operations[symbol](num1, num2)
@@ -62,17 +67,21 @@ def math():
 
                     if loop == 'y':
                         num1 = answer
+                        
                     else:
                         os.system('cls')
                         math()  # Recursive call to restart the calculator
+                        
                 else:
                     os.system('cls')
                     print(f"'{num2}' is not a number.")
                     math()  # Recursive call to restart the calculator
+                    
             else:
                 os.system('cls')
                 print(f"This symbol '{symbol}' is not recognized by the calculator, please try calculating again.")
                 math()  # Recursive call to restart the calculator
+                
     else:
         os.system('cls')
         print(f"'{num1}' is not a number.")
