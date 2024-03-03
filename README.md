@@ -1,5 +1,4 @@
-# calculator
- 
+
 Day 10 of 100-day Python coding challenge
 
 # Calculator
